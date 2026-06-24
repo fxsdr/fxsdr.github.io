@@ -1,0 +1,728 @@
+/* ==========================================================================
+   RESET & BASE STYLES
+   ========================================================================== */
+:root {
+    /* Color Palette Inspired by Canva Blue Watercolor Elegant Template */
+    --color-bg-primary: #f4f7f9;
+    --color-bg-secondary: #ffffff;
+    --color-blue-dark: #0f2c59;
+    --color-blue-mid: #1d4477;
+    --color-blue-light: #e3ecf5;
+    --color-gold: #c5a880;
+    --color-gold-dark: #aa8b5c;
+    --color-text-dark: #2c3e50;
+    --color-text-light: #7f8c8d;
+    
+    /* Typography Constants */
+    --font-serif: 'Cinzel', serif;
+    --font-cursive: 'Great Vibes', cursive;
+    --font-sans: 'Montserrat', sans-serif;
+    
+    /* Transitions */
+    --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-dark);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* Beautiful Elegant Seamless Watercolor Layering using CSS Gradients */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: 
+        radial-gradient(circle at 10% 10%, rgba(227, 236, 245, 0.6) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(206, 222, 238, 0.5) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.8) 0%, rgba(244, 247, 249, 0.9) 100%);
+    z-index: -1;
+}
+
+/* ==========================================================================
+   LAYOUT & UTILITIES
+   ========================================================================== */
+.container {
+    width: 100%;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1140px;
+}
+
+.container-narrow {
+    max-width: 680px;
+}
+
+.text-center { text-align: center; }
+.hidden-content { display: none !important; }
+.hidden { display: none !important; }
+
+/* ==========================================================================
+   COMPONENTS: BUTTONS
+   ========================================================================== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 0.85rem 2.5rem;
+    font-size: 0.85rem;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: var(--color-blue-dark);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(15, 44, 89, 0.2);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-blue-mid);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(15, 44, 89, 0.3);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border-color: var(--color-gold);
+    color: var(--color-gold-dark);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-gold);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.btn-block { width: 100%; }
+
+/* ==========================================================================
+   GATE OVERLAY / COVER
+   ========================================================================== */
+.gate-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--color-bg-secondary);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+    padding: 2rem;
+}
+
+/* Elegant borders inside gate mimicking a luxury invitation card */
+.gate-overlay::after {
+    content: '';
+    position: absolute;
+    top: 20px; left: 20px; right: 20px; bottom: 20px;
+    border: 1px solid var(--color-gold);
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.gate-subtitle {
+    font-family: var(--font-serif);
+    letter-spacing: 4px;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    margin-bottom: 1rem;
+}
+
+.gate-title {
+    font-family: var(--font-cursive);
+    font-size: clamp(3rem, 10vw, 5rem);
+    color: var(--color-blue-dark);
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
+
+.gate-date {
+    font-family: var(--font-serif);
+    letter-spacing: 3px;
+    color: var(--color-gold-dark);
+    margin-bottom: 2.5rem;
+}
+
+/* ==========================================================================
+   AUDIO FLOATING BUTTON
+   ========================================================================== */
+.audio-control {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 999;
+}
+
+.audio-btn {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-gold);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: var(--transition-smooth);
+}
+
+.audio-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--color-blue-dark);
+}
+
+.audio-btn:hover {
+    transform: scale(1.1);
+    background: var(--color-blue-light);
+}
+
+/* ==========================================================================
+   HERO HERO SECTION
+   ========================================================================== */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 1rem;
+}
+
+.hero-frame {
+    padding: clamp(2rem, 5vw, 4rem) 1.5rem;
+    border: 1px solid var(--color-gold);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(5px);
+    border-radius: 4px;
+    max-width: 800px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(15, 44, 89, 0.05);
+}
+
+.hero-upper {
+    font-family: var(--font-serif);
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    color: var(--color-text-light);
+    margin-bottom: 1.5rem;
+}
+
+.hero-names {
+    font-family: var(--font-cursive);
+    font-size: clamp(3.5rem, 12vw, 6rem);
+    color: var(--color-blue-dark);
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+
+.hero-date {
+    font-family: var(--font-serif);
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    letter-spacing: 2px;
+    color: var(--color-gold-dark);
+    margin-bottom: 2.5rem;
+}
+
+/* Countdown Styles */
+.countdown-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.countdown-item {
+    background: var(--color-blue-dark);
+    color: white;
+    padding: 0.75rem 0;
+    width: 70px;
+    border-radius: 4px;
+    box-shadow: 0 4px 10px rgba(15,44,89,0.15);
+}
+
+.countdown-item span {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    display: block;
+}
+
+.countdown-item p {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.8;
+}
+
+/* ==========================================================================
+   COUPLE SECTION
+   ========================================================================== */
+.couple-section {
+    padding: 6rem 0;
+    background: rgba(255,255,255,0.4);
+}
+
+.section-intro {
+    font-size: 0.95rem;
+    max-width: 600px;
+    margin: 0 auto 4rem;
+    color: var(--color-text-dark);
+    font-style: italic;
+}
+
+.couple-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.couple-name {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    color: var(--color-blue-dark);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.couple-parents {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+}
+
+.couple-ampersand {
+    font-family: var(--font-cursive);
+    font-size: 3rem;
+    color: var(--color-gold);
+}
+
+/* ==========================================================================
+   EVENT SECTION
+   ========================================================================== */
+.event-section {
+    padding: 6rem 0;
+}
+
+.section-title {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    color: var(--color-blue-dark);
+    margin-bottom: 3rem;
+    letter-spacing: 2px;
+}
+
+.event-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.event-card {
+    background: var(--color-bg-secondary);
+    border: 1px solid rgba(197, 168, 128, 0.3);
+    border-radius: 8px;
+    padding: 2.5rem 1.5rem;
+    transition: var(--transition-smooth);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(15, 44, 89, 0.08);
+    border-color: var(--color-gold);
+}
+
+.accent-card {
+    background: linear-gradient(145deg, #ffffff, var(--color-blue-light));
+    border-color: var(--color-gold);
+}
+
+.event-type {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    color: var(--color-blue-dark);
+    margin-bottom: 1rem;
+}
+
+.event-time {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-gold-dark);
+    margin-bottom: 1rem;
+}
+
+.event-venue {
+    font-size: 0.9rem;
+    color: var(--color-text-dark);
+}
+
+.icon-maps {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+    margin-right: 8px;
+}
+
+/* ==========================================================================
+   RSVP & WISHES FORM
+   ========================================================================== */
+.rsvp-section {
+    padding: 6rem 0;
+    background: rgba(255,255,255,0.6);
+}
+
+.rsvp-form {
+    background: var(--color-bg-secondary);
+    padding: 2.5rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+    border: 1px solid rgba(197, 168, 128, 0.2);
+    margin-bottom: 4rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--color-blue-dark);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #dcdde1;
+    border-radius: 4px;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    transition: var(--transition-smooth);
+    background-color: #fcfcfc;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-blue-mid);
+    background-color: #fff;
+    box-shadow: 0 0 8px rgba(29, 68, 119, 0.1);
+}
+
+/* Guestbook stream styles */
+.wishes-box {
+    margin-top: 2rem;
+}
+
+.wishes-title {
+    font-family: var(--font-serif);
+    color: var(--color-blue-dark);
+    margin-bottom: 2rem;
+}
+
+.wishes-stream {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+.wish-card {
+    background: var(--color-bg-secondary);
+    padding: 1.25rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    border-left: 3px solid var(--color-gold);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+    animation: fadeInUp 0.5s ease both;
+}
+
+.wish-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.wish-name {
+    font-weight: 600;
+    color: var(--color-blue-dark);
+    font-size: 0.9rem;
+}
+
+.wish-status {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.status-hadir {
+    background-color: #e3fcef;
+    color: #0e6245;
+}
+
+.status-tidak-hadir {
+    background-color: #ffebe6;
+    color: #bf2600;
+}
+
+.wish-text {
+    font-size: 0.9rem;
+    color: var(--color-text-dark);
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.footer {
+    padding: 5rem 1rem 3rem;
+    background: var(--color-blue-dark);
+    color: white;
+}
+
+.footer-text {
+    font-family: var(--font-serif);
+    font-style: italic;
+    opacity: 0.8;
+    margin-bottom: 1rem;
+}
+
+.footer-names {
+    font-family: var(--font-cursive);
+    font-size: 3rem;
+    color: var(--color-gold);
+    margin-bottom: 3rem;
+}
+
+.copyright {
+    font-size: 0.75rem;
+    opacity: 0.5;
+    letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   ANIMATIONS & SCROLL EFFECT
+   ========================================================================== */
+.section-fade {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.section-fade.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================================
+   RESPONSIVE MEDIA QUERIES (Desktop Layout Enhancements)
+   ========================================================================== */
+@media (min-width: 768px) {
+    .couple-grid {
+        flex-direction: row;
+        justify-content: center;
+        gap: 4rem;
+    }
+    
+    .couple-profile {
+        width: 40%;
+    }
+    
+    .couple-profile:first-child { text-align: right; }
+    .couple-profile:last-child { text-align: left; }
+    
+    .event-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+    }
+    
+    .rsvp-form {
+        padding: 4rem;
+    }
+}
+/* ==========================================================================
+   AMPLOP DIGITAL / GIFT SECTION
+   ========================================================================== */
+.gift-section {
+    padding: 6rem 0;
+    background: rgba(255,255,255,0.5);
+}
+
+.gift-intro {
+    font-size: 0.95rem;
+    max-width: 560px;
+    margin: 0 auto 3rem;
+    color: var(--color-text-dark);
+    font-style: italic;
+    line-height: 1.8;
+}
+
+.gift-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 640px) {
+    .gift-cards {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.gift-card {
+    background: var(--color-bg-secondary);
+    border: 1px solid rgba(197, 168, 128, 0.35);
+    border-radius: 12px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.04);
+    transition: var(--transition-smooth);
+}
+
+.gift-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 35px rgba(15, 44, 89, 0.08);
+    border-color: var(--color-gold);
+}
+
+.gift-bank-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.gift-bank-logo {
+    font-size: 2rem;
+    width: 52px;
+    height: 52px;
+    background: var(--color-blue-light);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.gift-bank-name {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-blue-dark);
+    margin-bottom: 0.2rem;
+}
+
+.gift-account-number {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-blue-mid);
+    letter-spacing: 1px;
+    margin-bottom: 0.2rem;
+}
+
+.gift-account-holder {
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+}
+
+.gift-qr-wrapper {
+    margin-bottom: 1.25rem;
+}
+
+.gift-qr-placeholder {
+    background: #f8f9fa;
+    border: 2px dashed rgba(197, 168, 128, 0.5);
+    border-radius: 8px;
+    padding: 1rem;
+    display: inline-block;
+    width: 100%;
+}
+
+.dummy-qr {
+    width: 160px;
+    height: 160px;
+    display: block;
+    margin: 0 auto 0.5rem;
+}
+
+.qr-dummy-label {
+    font-size: 0.7rem;
+    color: var(--color-text-light);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.btn-copy {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    border: 1px solid var(--color-gold);
+    color: var(--color-gold-dark);
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    width: 100%;
+    justify-content: center;
+}
+
+.btn-copy:hover {
+    background: var(--color-gold);
+    color: white;
+}
+
+.btn-copy.copied {
+    background: #e3fcef;
+    border-color: #0e6245;
+    color: #0e6245;
+}
